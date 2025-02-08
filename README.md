@@ -1,0 +1,1 @@
+This project is made to have a portfolio of the projects that I have done. It compiles all my projects into one website that other people can access and look at my accomplishments. I can also add new projects that I learn and can delete unnecessary or outdated projects.
