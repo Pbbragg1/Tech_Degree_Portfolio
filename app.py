@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 
 app = Flask(__name__)
@@ -8,19 +8,20 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/projects/new')
+@app.route('/projects/new', methods=['GET', 'POST'])
 def new_project():
+    print(request.form)
     return render_template('projectform.html')
 
-@app.route('/<id>')
+@app.route('/{id}')
 def detail():
     return render_template('detail.html')
 
-@app.route('/projects/<id>/edit')
+@app.route('/projects/{id}/edit')
 def edit():
     return render_template('projectform.html')
 
-@app.route('/projects/<id>/delete')
+@app.route('/projects/{id}/delete')
 def delete():
     return render_template('projectform.html')
 
