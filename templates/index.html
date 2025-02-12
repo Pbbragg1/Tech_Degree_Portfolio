@@ -35,12 +35,12 @@
                           Projects
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#project1">Number Guessing Game</a></li>
-                          <li><a class="dropdown-item" href="#project2">Basketball Stats Tool</a></li>
-                          <li><a class="dropdown-item" href="#project3">Phrase Hunter</a></li>
-                          <li><a class="dropdown-item" href="#project4">Store Inventory</a></li>
-                          <li><a class="dropdown-item" href="#project5">Thanksgiving Project</a></li>
-                          <li><a class="dropdown-item" href="#project6">Slot Machine</a></li>
+                          <li><a class="dropdown-item" href="#1">Number Guessing Game</a></li>
+                          <li><a class="dropdown-item" href="#2">Basketball Stats Tool</a></li>
+                          <li><a class="dropdown-item" href="#3">Phrase Hunter</a></li>
+                          <li><a class="dropdown-item" href="#4">Store Inventory</a></li>
+                          <li><a class="dropdown-item" href="#5">Thanksgiving Project</a></li>
+                          <li><a class="dropdown-item" href="#6">Slot Machine</a></li>
                         </ul>
                       </li>
                       <li class="nav-item">
@@ -86,85 +86,21 @@
             <i class="fas fa-file-code"></i>
             <h2>Projects</h2>
             <div id="project-list">
-                <div id="project1" class="a-project">
-                    <h3>Number Guessing game</h3>
-                    <a href="https://github.com/Pbbragg1/Python-tech-degree-number-guessing-game" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        I think of a number, you guess a number, and I tell you if its higher or lower. Too many strikes and you are out. 
-                    </p>
-                    <p>
-                        Skills: Loops, Error Handling, Functions, Lists, and Randomness
-                    </p>
-                </div>
-                <div id="project2" class="a-project">
-                    <h3>Basketball Stats Tool</h3>
-                    <a href="https://github.com/Pbbragg1/basketball_stats_tool" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Using coding I take in values of players and output the information about these players, including teams and their stats.
-                    </p>
-                    <p>
-                        Skills: Lists, Loops, Functions, Cleaning data, Accessing lists from different files, and connecting multple files
-                    </p>
-                </div>
-                <div id="project3" class="a-project">
-                    <h3>Phrase Hunter</h3>
-                    <a href="https://github.com/Pbbragg1/Phrase_hunters" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Have you ever played the classic game of hang man? Well this is exactly that but optomized with coding.
-                    </p>
-                    <p>
-                        Skills: Loops, Lists, Accessing different files, Error Handling, and learning to group together alike things into specific files.
-                    </p>
-                </div>
-                <div id="project4" class="a-project">
-                    <h3>Store Inventory</h3>
-                    <a href="https://github.com/Pbbragg1/inventory" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        Look at your products, delete them, edit them, and add more products to your store inventory. An easy place
-                        to keep track of the things you have, what they cost, and when you got them.
-                    </p>
-                    <p>
-                        Skills: Loops, Functions, Error Handling, Connecting different files, Using CSV files, and Utilizing SQLAlchemy. 
-                    </p>
-                </div>
-                <div id="project5" class="a-project">
-                    <h3>Thanksgiving project</h3>
-                    <a href="https://github.com/Pbbragg1/thanksgiving-project" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        answer a few questions about the food you are having and how many people and let the computer tell you how much your meal will be.
-                    </p>
-                    <p>
-                        Skills: Lists, Loops, Functions, Cleaning data, dictionaries, and connecting multple files
-                    </p>
-                </div>
-                <div id="project6" class="a-project">
-                    <h3>Slot Machine</h3>
-                    <a href="https://github.com/Pbbragg1/slot_machine" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        You're given a certain amount of money to start with, spend it wisely as you spin the slot maching wheel and try and win some back.
-                    </p>
-                    <p>
-                        Skills: Lists, Loops, Functions, Cleaning data, and Using Randomness.
-                    </p>
-                </div>
+                {% for project in projects %}
+                    <div id="{{ project.id }}" class="a-project">
+                        <h3>{{ project.title }}</h3>
+                        <a href="{{ url_for('detail') }}" target="_blank" class="github-btn">
+                            <i class="fab fa-github"></i>
+                            view details
+                        </a>
+                        <p>
+                             {{ project.desc }}
+                        </p>
+                        <p>
+                            {{ project.skills }}
+                        </p>
+                    </div>
+                {% endfor %}
             </div>
             <div id="triangle4"></div>
         </section>

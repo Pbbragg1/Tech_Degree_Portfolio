@@ -1,17 +1,19 @@
 from flask import Flask, render_template, url_for, request, redirect
 from models import db, Projects, app
+from datetime import datetime, date
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    projects = Projects.query.all()
+    return render_template('index.html', projects=projects)
 
 @app.route('/projects/new', methods=['GET', 'POST'])
 def new_project():
     if request.form:
-        new_project_ = Projects(title=request.form['title'], date=request.form['date'], description=request.form['desc'], skills=request.form['skills'], github=['github'])
+        new_project_ = Projects(title=request.form['title'], date=datetime.strptime(request.form['date'], "%Y-%m").date().replace(day=1), desc=request.form['desc'], skills=request.form['skills'], github=request.form['github'])
         db.session.add(new_project_)
-        db.session.commit(new_project_)
+        db.session.commit()
         return redirect(url_for('index'))
     return render_template('projectform.html')
 
