@@ -17,15 +17,17 @@ def new_project():
         return redirect(url_for('index'))
     return render_template('projectform.html')
 
-@app.route('/{id}')
-def detail():
-    return render_template('detail.html')
+@app.route('/projects/<id>')
+def detail(id):
+    projects = Projects.query.all()
+    project = Projects.query.get(id)
+    return render_template('detail.html', projects=projects, project=project)
 
-@app.route('/projects/{id}/edit')
+@app.route('/projects/<id>/edit')
 def edit():
     return render_template('projectform.html')
 
-@app.route('/projects/{id}/delete')
+@app.route('/projects/<id>/delete')
 def delete():
     return render_template('projectform.html')
 

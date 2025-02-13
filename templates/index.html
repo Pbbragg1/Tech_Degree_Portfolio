@@ -35,12 +35,9 @@
                           Projects
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#1">Number Guessing Game</a></li>
-                          <li><a class="dropdown-item" href="#2">Basketball Stats Tool</a></li>
-                          <li><a class="dropdown-item" href="#3">Phrase Hunter</a></li>
-                          <li><a class="dropdown-item" href="#4">Store Inventory</a></li>
-                          <li><a class="dropdown-item" href="#5">Thanksgiving Project</a></li>
-                          <li><a class="dropdown-item" href="#6">Slot Machine</a></li>
+                            {% for project in projects %}
+                                <li><a class="dropdown-item" href="#{{ project.id }}">{{ project.title }}</a></li>
+                            {% endfor %}
                         </ul>
                       </li>
                       <li class="nav-item">
@@ -89,7 +86,7 @@
                 {% for project in projects %}
                     <div id="{{ project.id }}" class="a-project">
                         <h3>{{ project.title }}</h3>
-                        <a href="{{ url_for('detail') }}" target="_blank" class="github-btn">
+                        <a href="{{ url_for('detail', id=project.id) }}" target="_blank" class="github-btn">
                             <i class="fab fa-github"></i>
                             view details
                         </a>
