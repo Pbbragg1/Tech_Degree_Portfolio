@@ -23,7 +23,7 @@
                     <div class="collapse navbar-collapse" id="navbarContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/#about">About</a>
@@ -45,7 +45,7 @@
                                 <a class="nav-link" href="/#contact">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('new_project') }}">Add Project</a>
+                                <a class="nav-link" href="#">Add Project</a>
                             </li>
                         </ul>
                     </div>
@@ -53,40 +53,31 @@
             </nav>
         </section>
         <section class="header">
-            <h1>{{ project.title }}</h1>
-            <p>{{ project.date.strftime("%B %Y") }}</p>
-            <a href="{{ project.github }}" class="github-btn">
-                <i class="fab fa-github"></i>
-                View on GitHub
-            </a>
-            <ul class="project-skills">
+            <h1>New Project</h1>
+        </section>
+        <section id="form">
+            <form action="{{ url_for('edit_project', id=project.id) }}" method="POST">
+                <label for="title">Project Title</label>
+                <input type="text" name="title" id="title" placeholder="Project Name" required value="{{ project.title }}">
+                <label for="date">Completion Date</label>
+                <input type="month" name="date" id="date" required>
+                <label for="description">Description</label>
+                <textarea name="desc" id="description" cols="30" rows="20" placeholder="Description" required>{{ project.desc }}</textarea>
+                <label for="skills-list" id="skills-label">Skills</label>
+                <p>Separate each skill by a comma</p>
+                <textarea name="skills" id="skills-list" cols="30" rows="10" placeholder="Skill, Skill" required>{{ project.skills }}</textarea>
+                <label for="github">GitHub Link</label>
+                <input type="url" name="github" id="github" placeholder="Link to the repo" required value="{{ project.github }}">
                 <div>
-                    <li>{{ project.skills }}</li>
+                    <button type="reset">Cancel</button>
+                    <button type="submit">Submit</button>
                 </div>
-            </ul>
-        </section>
-        <section id="project-desc">
-            <div id="triangle5"></div>
-            <h2>description</h2>
-            <p>
-                {{ project.desc }}
-            </p>
-            <div id="triangle6"></div>
-        </section>
-        <section id="edit-delete">
-            <a href="{{ url_for('edit_project', id=project.id) }}">
-                <i class="fas fa-edit"></i>
-                Edit
-            </a>
-            <a href="#">
-                <i class="far fa-trash-alt"></i>
-                Delete
-            </a>
+            </form>
         </section>
         <section class="footer">
             <div class="socials">
                 <!--Delete any you don't use-->
-                <!--Icons from FontAwesome.com/icons-->
+                <!--Icons from FontAwesome.com/icons-->>
                 <a href="https://github.com/Pbbragg1", target="_blank">
                     <i class="fab fa-github"></i>
                 </a>

@@ -23,9 +23,18 @@ def detail(id):
     project = Projects.query.get(id)
     return render_template('detail.html', projects=projects, project=project)
 
-@app.route('/projects/<id>/edit')
-def edit():
-    return render_template('projectform.html')
+@app.route('/projects/<id>/edit', methods=['GET', 'POST'])
+def edit_project(id):
+    project = Projects.query.get(id)
+    if request.form:
+        project.title = request.form['title']
+        project.date = datetime.strptime(request.form['date'], "%Y-%m").date().replace(day=1)
+        project.desc = request.form['desc']
+        project.skills = request.form['skills']
+        project.github = request.form['github']
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('editform.html', project=project)
 
 @app.route('/projects/<id>/delete')
 def delete():
