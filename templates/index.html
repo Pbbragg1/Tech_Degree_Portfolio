@@ -86,7 +86,7 @@
                 {% for project in projects %}
                     <div id="{{ project.id }}" class="a-project">
                         <h3>{{ project.title }}</h3>
-                        <a href="{{ url_for('detail', id=project.id) }}" target="_blank" class="github-btn">
+                        <a href="{{ url_for('detail', id=project.id) }}" class="github-btn">
                             <i class="fab fa-github"></i>
                             view details
                         </a>

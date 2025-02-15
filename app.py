@@ -39,8 +39,11 @@ def edit_project(id):
     return render_template('editform.html', project=project, projects=projects)
 
 @app.route('/projects/<id>/delete')
-def delete():
-    return render_template('projectform.html')
+def delete_projects(id):
+    project = Projects.query.get(id)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 
 
