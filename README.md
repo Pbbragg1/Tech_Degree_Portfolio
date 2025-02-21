@@ -1,0 +1,1 @@
+This project is to make a portfolio of previous and ongoing porojects. This porject collects them all into one website that allows me to add new porjects or delete outdated ones. 
